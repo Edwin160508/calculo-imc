@@ -2,9 +2,8 @@
 document.querySelector('.titulo_header').textContent="Aperecida Nutricionista"; //proriedade
 document.querySelector('.subtitulo').textContent = "Meus Clientes";//proriedade
 
-var paciente1 = document.querySelector('#primeiro_paciente'); // TR 
-var pesoPaciente1 = paciente1.querySelector('.info-peso').textContent; //Reuso do seletor anterior para obter o valor do Peso
-var alturaPaciente1 = paciente1.querySelector('.info-altura').textContent; //Reuso do seletor anterior para obter o valor da Altura
+var pacientes = document.querySelectorAll('.paciente'); // TR 
+
 
 function calculoImc(peso, altura){
 	let retorno = 0;	
@@ -26,5 +25,11 @@ function calculoImc(peso, altura){
 	return retorno;
 }
 
-var imcPaciente1 = paciente1.querySelector('.info-imc'); //td imc
-imcPaciente1.textContent = calculoImc(pesoPaciente1, alturaPaciente1);
+
+//Setando valores do IMC em todos os pacientes na tabela
+for(var i =0; i< pacientes.length; i++){
+	let peso = pacientes[i].querySelector('.info-peso').textContent;
+	let altura = pacientes[i].querySelector('.info-altura').textContent;
+
+	pacientes[i].querySelector('.info-imc').textContent = calculoImc(peso, altura);
+}
