@@ -10,13 +10,15 @@ function calculoImc(peso, altura){
 	let retorno = 0;	
 	let pesoEhValido = true;
 	let alturaEhValida = true;
-	if(peso < 0 || peso > 1000){
+	if(peso <= 0 || peso >= 1000){
 		console.log('Peso inválido!');	    
 		pesoEhValido = false;
+		retorno = 'Peso inválido!';
 	}
-	if(altura < 0 || altura > 3.00){
+	if(altura <= 0 || altura >= 3.00){
 		console.log('Altura inválida!');	    
 		alturaEhValida = false;
+		retorno = 'Altura inválida!';
 	}
 	if(pesoEhValido && alturaEhValida){
 		retorno = peso / (altura*altura);
