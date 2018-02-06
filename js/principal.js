@@ -38,6 +38,6 @@ for(var i =0; i< pacientes.length; i++){
 	imc.textContent = calculoImc(peso, altura);
 	//pitando fonte em vermelho caso 'imc' for 0 siguinificando que 'Altura' ou 'Peso' estão inválidos.
 	if(imc.textContent === 'Peso inválido!' || imc.textContent === 'Altura inválida!'){
-		pacientes[i].style.color = 'red';
+		pacientes[i].style.backgroundColor = 'lightcoral';
 	}
 }
