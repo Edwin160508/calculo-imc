@@ -22,7 +22,7 @@ function calculoImc(peso, altura){
 	if(pesoEhValido && alturaEhValida){
 		retorno = peso / (altura*altura);
 	}
-	return retorno;
+	return retorno.toFixed(2);
 }
 
 
