@@ -22,7 +22,11 @@ function calculoImc(peso, altura){
 	if(pesoEhValido && alturaEhValida){
 		retorno = peso / (altura*altura);
 	}
-	return retorno.toFixed(2);
+	if(typeof(retorno) === 'number'){//deixando apenas 2 casas decimais
+		retorno = retorno.toFixed(2);
+	}
+	
+	return retorno;
 }
 
 
@@ -30,6 +34,10 @@ function calculoImc(peso, altura){
 for(var i =0; i< pacientes.length; i++){
 	let peso = pacientes[i].querySelector('.info-peso').textContent;
 	let altura = pacientes[i].querySelector('.info-altura').textContent;
-
-	pacientes[i].querySelector('.info-imc').textContent = calculoImc(peso, altura);
+	let imc = pacientes[i].querySelector('.info-imc');
+	imc.textContent = calculoImc(peso, altura);
+	//pitando fonte em vermelho caso 'imc' for 0 siguinificando que 'Altura' ou 'Peso' estão inválidos.
+	if(imc.textContent === 'Peso inválido!' || imc.textContent === 'Altura inválida!'){
+		pacientes[i].style.color = 'red';
+	}
 }
