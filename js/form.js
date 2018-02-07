@@ -24,13 +24,18 @@ function montaTrAdicionaATabela(paciente){
 	/*Criando TR*/
 	let pacienteTr = document.createElement('tr');
 	pacienteTr.classList.add('paciente');
-	
+
 	/*Criando TD*/
 	let nomeTd = document.createElement('td');
+	nomeTd.classList.add('info-nome');
 	let pesoTd = document.createElement('td');
+	pesoTd.classList.add('info-peso');
 	let alturaTd = document.createElement('td');
+	alturaTd.classList.add('info-altura');
 	let gorduraTd = document.createElement('td');
+	gorduraTd.classList.add('info-gordura')
 	let imcTd = document.createElement('td');
+	imcTd.classList.add('info-imc');
 
 	/*Setando valores vindos do formulario em cada TD*/
 	nomeTd.textContent = paciente.nome;
