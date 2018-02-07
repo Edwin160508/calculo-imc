@@ -23,7 +23,8 @@ function montaTrAdicionaATabela(paciente){
 	let tabelaPacientes = document.querySelector('#tabela-pacientes');
 	/*Criando TR*/
 	let pacienteTr = document.createElement('tr');
-
+	pacienteTr.classList.add('paciente');
+	
 	/*Criando TD*/
 	let nomeTd = document.createElement('td');
 	let pesoTd = document.createElement('td');
@@ -38,6 +39,9 @@ function montaTrAdicionaATabela(paciente){
 	gorduraTd.textContent = paciente.gordura;
 	imcTd.textContent = paciente.imc;
 
+	if(typeof(paciente.imc) != 'number'){
+		pacienteTr.classList.add('paciente-invalido');
+	}
 	/*Adicionando TDs como filhas da TR*/
 	pacienteTr.appendChild(nomeTd);
 	pacienteTr.appendChild(pesoTd);
