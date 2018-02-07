@@ -40,3 +40,8 @@ for(var i =0; i< pacientes.length; i++){
 		pacientes[i].classList.add('paciente-invalido');
 	}
 }
+
+document.querySelector('#adicionar-paciente').addEventListener('click', function(event){
+	event.preventDefault();
+	console.log('cliquei');
+});
