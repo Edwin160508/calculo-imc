@@ -1,14 +1,25 @@
 /*Adicionar Dados do formulário na tabela*/
 document.querySelector('#adicionar-paciente').addEventListener('click', function(event){
 	event.preventDefault();
-	let nome = document.querySelector('#nome').value;
-	let peso = document.querySelector('#peso').value;
-	let altura = document.querySelector('#altura').value;
-	let gordura = document.querySelector('#gordura').value;
-	montarHtmlDadosFormulario(nome, peso, altura, gordura);	
+	let form = document.querySelector('#form-adciona');
+	let pacienteFormulario = obterPacienteFormulario(form);
+	
+	montaTrAdicionaATabela(pacienteFormulario);	
 });
 
-function montarHtmlDadosFormulario(nome, peso, altura, gordura){
+function obterPacienteFormulario(form){
+	let paciente = {
+		nome: form.nome.value, 
+		peso: form.peso.value, 
+		altura: form.altura.value, 
+		gordura: form.gordura.value,
+		imc: calculoImc(form.peso.value, form.altura.value)
+	};
+
+	return paciente;	
+}
+
+function montaTrAdicionaATabela(paciente){
 	let tabelaPacientes = document.querySelector('#tabela-pacientes');
 	/*Criando TR*/
 	let pacienteTr = document.createElement('tr');
@@ -21,11 +32,11 @@ function montarHtmlDadosFormulario(nome, peso, altura, gordura){
 	let imcTd = document.createElement('td');
 
 	/*Setando valores vindos do formulario em cada TD*/
-	nomeTd.textContent = nome;
-	pesoTd.textContent = peso;
-	alturaTd.textContent = altura;
-	gorduraTd.textContent = gordura;
-	imcTd.textContent = calculoImc(peso, altura);
+	nomeTd.textContent = paciente.nome;
+	pesoTd.textContent = paciente.peso;
+	alturaTd.textContent = paciente.altura;
+	gorduraTd.textContent = paciente.gordura;
+	imcTd.textContent = paciente.imc;
 
 	/*Adicionando TDs como filhas da TR*/
 	pacienteTr.appendChild(nomeTd);
