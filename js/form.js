@@ -25,29 +25,19 @@ function montaTrAdicionaATabela(paciente){
 	let pacienteTr = document.createElement('tr');
 	pacienteTr.classList.add('paciente');
 
-	/*Criando TD*/
-	let nomeTd = document.createElement('td');
-	nomeTd.classList.add('info-nome');
-	let pesoTd = document.createElement('td');
-	pesoTd.classList.add('info-peso');
-	let alturaTd = document.createElement('td');
-	alturaTd.classList.add('info-altura');
-	let gorduraTd = document.createElement('td');
-	gorduraTd.classList.add('info-gordura')
-	let imcTd = document.createElement('td');
-	imcTd.classList.add('info-imc');
+	/*Criando e montando TD*/
+	let nomeTd = montaTd(paciente.nome, 'info-nome');
+	let pesoTd = montaTd(paciente.peso, 'info-peso');
+	let alturaTd = montaTd(paciente.altura, 'info-altura');
+	let gorduraTd = montaTd(paciente.gordura, 'info-gordura');
+	let imcTd = montaTd(paciente.imc, 'info-imc');
 
-	/*Setando valores vindos do formulario em cada TD*/
-	nomeTd.textContent = paciente.nome;
-	pesoTd.textContent = paciente.peso;
-	alturaTd.textContent = paciente.altura;
-	gorduraTd.textContent = paciente.gordura;
-	imcTd.textContent = paciente.imc;
-
+	/*Validando imc caso retorne mensagem de erro "peso" ou "altura" inválidos*/
 	if(typeof(paciente.imc) != 'number'){
 		pacienteTr.classList.add('paciente-invalido');
 	}
-	/*Adicionando TDs como filhas da TR*/
+
+	/*Adicionando TDs recem montadas como filhas da TR*/
 	pacienteTr.appendChild(nomeTd);
 	pacienteTr.appendChild(pesoTd);
 	pacienteTr.appendChild(alturaTd);
@@ -56,4 +46,12 @@ function montaTrAdicionaATabela(paciente){
 	
 	/*Adicionando TR totalmente preenchida na tbody '#tabela-pacientes'*/
 	tabelaPacientes.appendChild(pacienteTr);
+}
+
+function montaTd(dado, classeCss){
+	let td = document.createElement('td');
+	td.textContent = dado;/*Setando valores vindos do formulario em cada TD*/
+	td.classList.add(classeCss);
+
+	return td;
 }
