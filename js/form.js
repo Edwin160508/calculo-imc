@@ -5,6 +5,7 @@ document.querySelector('#adicionar-paciente').addEventListener('click', function
 	let pacienteFormulario = obterPacienteFormulario(form);
 	
 	montaTrAdicionaATabela(pacienteFormulario);	
+	form.reset();
 });
 
 function obterPacienteFormulario(form){
@@ -25,24 +26,18 @@ function montaTrAdicionaATabela(paciente){
 	let pacienteTr = document.createElement('tr');
 	pacienteTr.classList.add('paciente');
 
-	/*Criando e montando TD*/
-	let nomeTd = montaTd(paciente.nome, 'info-nome');
-	let pesoTd = montaTd(paciente.peso, 'info-peso');
-	let alturaTd = montaTd(paciente.altura, 'info-altura');
-	let gorduraTd = montaTd(paciente.gordura, 'info-gordura');
-	let imcTd = montaTd(paciente.imc, 'info-imc');
-
 	/*Validando imc caso retorne mensagem de erro "peso" ou "altura" inválidos*/
-	if(typeof(paciente.imc) != 'number'){
+	console.log(typeof(paciente.imc));
+	if(paciente.imc === 'Peso inválido!' || paciente.imc === 'Altura inválida!' || paciente.imc === 'Peso e Altura inválidos!'){
 		pacienteTr.classList.add('paciente-invalido');
 	}
 
 	/*Adicionando TDs recem montadas como filhas da TR*/
-	pacienteTr.appendChild(nomeTd);
-	pacienteTr.appendChild(pesoTd);
-	pacienteTr.appendChild(alturaTd);
-	pacienteTr.appendChild(gorduraTd);
-	pacienteTr.appendChild(imcTd);
+	pacienteTr.appendChild(montaTd(paciente.nome, 'info-nome'));
+	pacienteTr.appendChild(montaTd(paciente.peso, 'info-peso'));
+	pacienteTr.appendChild(montaTd(paciente.altura, 'info-altura'));
+	pacienteTr.appendChild(montaTd(paciente.gordura, 'info-gordura'));
+	pacienteTr.appendChild(montaTd(paciente.imc, 'info-imc'));
 	
 	/*Adicionando TR totalmente preenchida na tbody '#tabela-pacientes'*/
 	tabelaPacientes.appendChild(pacienteTr);

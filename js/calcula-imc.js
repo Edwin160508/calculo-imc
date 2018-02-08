@@ -23,6 +23,9 @@ function calculoImc(peso, altura){
 		retorno = peso / (altura*altura);
 		retorno = retorno.toFixed(2);//deixando apenas 2 casas decimais
 	}
+	if(!pesoEhValido && !alturaEhValida){
+		retorno = 'Peso e Altura inválidos!';
+	}
 	
 	return retorno;
 }
