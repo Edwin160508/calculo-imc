@@ -1,7 +1,8 @@
-/*Adicionar Dados do formulário na tabela*/
+
+var form = document.querySelector('#form-adciona');
+/*Click do botao Adicionar Dados do formulário na tabela*/
 document.querySelector('#adicionar-paciente').addEventListener('click', function(event){
-	event.preventDefault();
-	let form = document.querySelector('#form-adciona');
+	event.preventDefault();	
 	let pacienteFormulario = obterPacienteFormulario(form);
 	let erro = validaPaciente(pacienteFormulario);
 	let mensagemErro = document.querySelector('#mensagem-erro');
@@ -15,6 +16,26 @@ document.querySelector('#adicionar-paciente').addEventListener('click', function
 	form.reset();
 	mensagemErro.textContent = '';
 });
+
+/*Comportamentos de tela do form*/
+/*Campo Peso */
+campoApenasNumeros(form.peso);
+/*Campo Altura */
+campoApenasNumeros(form.altura);
+/*Campo Gordura */
+campoApenasNumeros(form.gordura);
+function campoApenasNumeros(campo){
+	campo.addEventListener('keyup', function(event){
+		var reg = /^\d+$/;		
+		if(!reg.test(campo.value)){							
+			campo.value = campo.value.replace(/\D/g, "");
+		}
+	
+	});
+}
+
+/*Fim Comportamentos de tela do form*/
+
 
 function obterPacienteFormulario(form){
 	let paciente = {
