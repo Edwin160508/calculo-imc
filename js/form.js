@@ -4,15 +4,16 @@ document.querySelector('#adicionar-paciente').addEventListener('click', function
 	let form = document.querySelector('#form-adciona');
 	let pacienteFormulario = obterPacienteFormulario(form);
 	let erro = validaPaciente(pacienteFormulario);
-	/*se maior que zero ocorreu algum erro */
+	let mensagemErro = document.querySelector('#mensagem-erro');
+	/*Se maior que zero ocorreu algum erro */
 	if(erro.length > 0){ 
-		document.querySelector('#mensagem').textContent = erro;
+		mensagemErro.textContent = erro;
 		return;
 	}
 	
 	montaTrAdicionaATabela(pacienteFormulario);	
 	form.reset();
-	document.querySelector('#mensagem').textContent = '';
+	mensagemErro.textContent = '';
 });
 
 function obterPacienteFormulario(form){
