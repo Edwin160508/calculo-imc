@@ -3,9 +3,16 @@ document.querySelector('#adicionar-paciente').addEventListener('click', function
 	event.preventDefault();
 	let form = document.querySelector('#form-adciona');
 	let pacienteFormulario = obterPacienteFormulario(form);
+	let erro = validaPaciente(pacienteFormulario);
+	/*se maior que zero ocorreu algum erro */
+	if(erro.length > 0){ 
+		document.querySelector('#mensagem').textContent = erro;
+		return;
+	}
 	
 	montaTrAdicionaATabela(pacienteFormulario);	
 	form.reset();
+	document.querySelector('#mensagem').textContent = '';
 });
 
 function obterPacienteFormulario(form){
@@ -51,6 +58,17 @@ function montaTd(dado, classeCss){
 	return td;
 }
 
+/*Retorna alguma mensagem caso os dados paciente no form estejam invalidos*/
 function validaPaciente(paciente){
+	let mensagem = "";
+	if(!validaPeso(paciente.peso))
+		mensagem = 'Peso inválido!';
 	
+	if(!validaAltura(paciente.altura))
+		mensagem ='Altura inválida!';
+	
+	if(!validaPeso(paciente.peso) && !validaAltura(paciente.altura))
+		mensagem = 'Peso e Altura inválidos!';
+
+	return mensagem;
 }

@@ -7,14 +7,14 @@ var pacientes = document.querySelectorAll('.paciente'); // TR
 
 function calculoImc(peso, altura){
 	let retorno = 0;	
-	let pesoEhValido = true;
-	let alturaEhValida = true;
-	if(!validaPeso(peso)){
+	let pesoEhValido = validaPeso(peso);
+	let alturaEhValida = validaAltura(altura);
+	if(!pesoEhValido){
 		console.log('Peso inválido!');	    
 		pesoEhValido = false;
 		retorno = 'Peso inválido!';
 	}
-	if(!validaAltura(altura)){
+	if(!alturaEhValida){
 		console.log('Altura inválida!');	    
 		alturaEhValida = false;
 		retorno = 'Altura inválida!';
@@ -36,6 +36,7 @@ function validaPeso(peso){
 		retorno = false;
 	}
 	return retorno;
+	
 }
 function validaAltura(altura){
 	let retorno = true;
