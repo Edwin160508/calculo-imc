@@ -9,12 +9,12 @@ function calculoImc(peso, altura){
 	let retorno = 0;	
 	let pesoEhValido = true;
 	let alturaEhValida = true;
-	if(peso <= 0 || peso >= 1000){
+	if(!validaPeso(peso)){
 		console.log('Peso inválido!');	    
 		pesoEhValido = false;
 		retorno = 'Peso inválido!';
 	}
-	if(altura <= 0 || altura >= 3.00){
+	if(!validaAltura(altura)){
 		console.log('Altura inválida!');	    
 		alturaEhValida = false;
 		retorno = 'Altura inválida!';
@@ -30,6 +30,20 @@ function calculoImc(peso, altura){
 	return retorno;
 }
 
+function validaPeso(peso){
+	let retorno = true;
+	if(peso <= 0 || peso >= 1000){
+		retorno = false;
+	}
+	return retorno;
+}
+function validaAltura(altura){
+	let retorno = true;
+	if(altura <= 0 || altura >= 3.00){				
+		retorno = false;
+	}
+	return retorno;
+}
 
 //Setando valores do IMC em todos os pacientes na tabela
 for(var i =0; i< pacientes.length; i++){

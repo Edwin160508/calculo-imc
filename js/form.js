@@ -26,7 +26,7 @@ function montaTrAdicionaATabela(paciente){
 	let pacienteTr = document.createElement('tr');
 	pacienteTr.classList.add('paciente');
 
-	/*Validando imc caso retorne mensagem de erro "peso" ou "altura" inválidos*/
+	/*Validando imc caso retorne mensagem de erro "peso" ou "altura" inválidos destacando em vermelho*/
 	console.log(typeof(paciente.imc));
 	if(paciente.imc === 'Peso inválido!' || paciente.imc === 'Altura inválida!' || paciente.imc === 'Peso e Altura inválidos!'){
 		pacienteTr.classList.add('paciente-invalido');
@@ -49,4 +49,8 @@ function montaTd(dado, classeCss){
 	td.classList.add(classeCss);
 
 	return td;
+}
+
+function validaPaciente(paciente){
+	
 }
