@@ -1,14 +1,15 @@
 
 var form = document.querySelector('#form-adciona');
+var mensagemErro = document.querySelector('#mensagens-erro');
 /*Click do botao Adicionar Dados do formulário na tabela*/
 document.querySelector('#adicionar-paciente').addEventListener('click', function(event){
 	event.preventDefault();	
 	let pacienteFormulario = obterPacienteFormulario(form);
 	let erro = validaPaciente(pacienteFormulario);
-	let mensagemErro = document.querySelector('#mensagem-erro');
+
 	/*Se maior que zero ocorreu algum erro */
 	if(erro.length > 0){ 
-		mensagemErro.textContent = erro;
+		exibeMensagensErro(erro);
 		return;
 	}
 	
@@ -95,4 +96,14 @@ function validaPaciente(paciente){
 		mensagem.push('Peso e Altura inválidos ');
 
 	return mensagem;
+}
+
+function exibeMensagensErro(erro){
+	//mensagemErro
+	
+	for(let i=0; i<erro.length; i++){	
+		let li = document.createElement('li');	
+		li.textContent = erro[i];
+		mensagemErro.appendChild(li);
+	}
 }
