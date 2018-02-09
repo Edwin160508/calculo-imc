@@ -82,15 +82,17 @@ function montaTd(dado, classeCss){
 
 /*Retorna alguma mensagem caso os dados paciente no form estejam invalidos*/
 function validaPaciente(paciente){
-	let mensagem = "";
+	let mensagem = [];
+	if(paciente.nome === '')
+		mensagem.push('Informe nome do paciente '); 
 	if(!validaPeso(paciente.peso))
-		mensagem = 'Peso inválido!';
+		mensagem.push('Peso inválido ');
 	
 	if(!validaAltura(paciente.altura))
-		mensagem ='Altura inválida!';
+		mensagem.push('Altura inválida ');
 	
 	if(!validaPeso(paciente.peso) && !validaAltura(paciente.altura))
-		mensagem = 'Peso e Altura inválidos!';
+		mensagem.push('Peso e Altura inválidos ');
 
 	return mensagem;
 }
