@@ -95,10 +95,13 @@ function validaPaciente(paciente){
 	if(!validaPeso(paciente.peso) && !validaAltura(paciente.altura))
 		mensagem.push('Peso e Altura inválidos ');
 
+	if(paciente.gordura === '')
+		mensagem.push('Informe a % de gordura ');
 	return mensagem;
 }
 
 function exibeMensagensErro(erros){
+	//let ul = document.querySelector();
 	//mensagensErros	
 	for(let i=0; i<erros.length; i++){	
 		let li = document.createElement('li');	
