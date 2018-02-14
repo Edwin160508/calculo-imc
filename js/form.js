@@ -96,7 +96,7 @@ function validaPaciente(paciente){
 		mensagem.push('Peso e Altura inválidos ');
 
 	if(paciente.gordura === '')
-		mensagem.push('Informe a % de gordura ');
+		mensagem.push('Informe a % de Gordura ');
 	return mensagem;
 }
 
