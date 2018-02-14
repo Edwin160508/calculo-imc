@@ -1,6 +1,6 @@
 
 var form = document.querySelector('#form-adciona');
-var mensagemErro = document.querySelector('#mensagens-erro');
+var mensagensErros= document.querySelector('#mensagens-erro');
 /*Click do botao Adicionar Dados do formulário na tabela*/
 document.querySelector('#adicionar-paciente').addEventListener('click', function(event){
 	event.preventDefault();	
@@ -15,7 +15,7 @@ document.querySelector('#adicionar-paciente').addEventListener('click', function
 	
 	montaTrAdicionaATabela(pacienteFormulario);	
 	form.reset();
-	mensagemErro.textContent = '';
+	mensagensErros.textContent = '';
 });
 
 /*Comportamentos de tela do form*/
@@ -29,7 +29,7 @@ function campoApenasNumeros(campo){
 	campo.addEventListener('keyup', function(event){
 		var reg = /^\d+$/;		
 		if(!reg.test(campo.value)){							
-			campo.value = campo.value.replace(/\D/g, "");
+			campo.value = campo.value.replace(/^\d+.\d{8}$/, "");
 		}
 	
 	});
@@ -98,12 +98,11 @@ function validaPaciente(paciente){
 	return mensagem;
 }
 
-function exibeMensagensErro(erro){
-	//mensagemErro
-	
-	for(let i=0; i<erro.length; i++){	
+function exibeMensagensErro(erros){
+	//mensagensErros	
+	for(let i=0; i<erros.length; i++){	
 		let li = document.createElement('li');	
-		li.textContent = erro[i];
-		mensagemErro.appendChild(li);
+		li.textContent = erros[i];
+		mensagensErros.appendChild(li);
 	}
 }
