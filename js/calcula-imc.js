@@ -9,13 +9,11 @@ function calculoImc(peso, altura){
 	let retorno = 0;	
 	let pesoEhValido = validaPeso(peso);
 	let alturaEhValida = validaAltura(altura);
-	if(!pesoEhValido){
-		console.log('Peso inválido!');	    
+	if(!pesoEhValido){			    
 		pesoEhValido = false;
 		retorno = 'Peso inválido!';
 	}
 	if(!alturaEhValida){
-		console.log('Altura inválida!');	    
 		alturaEhValida = false;
 		retorno = 'Altura inválida!';
 	}
