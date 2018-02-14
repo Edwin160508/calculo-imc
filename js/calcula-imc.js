@@ -6,7 +6,9 @@ var pacientes = document.querySelectorAll('.paciente'); // TR
 
 
 function calculoImc(peso, altura){
-	let retorno = 0;	
+	let retorno = 0;
+	peso = parseFloat(peso).toFixed(2);
+	altura = parseFloat(altura).toFixed(2);	
 	let pesoEhValido = validaPeso(peso);
 	let alturaEhValida = validaAltura(altura);
 	if(!pesoEhValido){			    
@@ -51,7 +53,7 @@ for(var i =0; i< pacientes.length; i++){
 	let imc = pacientes[i].querySelector('.info-imc');
 	imc.textContent = calculoImc(peso, altura);
 	//pitando fonte em vermelho caso 'imc' for 0 siguinificando que 'Altura' ou 'Peso' estão inválidos.
-	if(imc.textContent === 'Peso inválido!' || imc.textContent === 'Altura inválida!'){
+	if(imc.textContent === 'Peso inválido!' || imc.textContent === 'Altura inválida!' || imc.textContent === 'Peso e Altura inválidos!'){
 		pacientes[i].classList.add('paciente-invalido');
 	}
 }
