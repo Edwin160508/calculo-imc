@@ -102,9 +102,11 @@ function validaPaciente(paciente){
 
 function exibeMensagensErro(erros){
 	mensagensErros.innerHTML = "";
-	for(let i=0; i<erros.length; i++){	
+
+	erros.forEach(function(erro)){
 		let li = document.createElement('li');	
-		li.textContent = erros[i];
+		li.textContent = erro;
 		mensagensErros.appendChild(li);
 	}
+
 }
