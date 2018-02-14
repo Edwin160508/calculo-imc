@@ -142,3 +142,9 @@ button[disabled=disabled], button:disabled {
 	font-weight: bold;
 	line-height: 3.5vh;
 }
+
+/*Classe responsavel para efeito de remoção do paciente*/
+.fadeOut{
+	opacity: 0;
+	transition: 0.5s;
+}
