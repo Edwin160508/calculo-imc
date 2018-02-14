@@ -101,8 +101,7 @@ function validaPaciente(paciente){
 }
 
 function exibeMensagensErro(erros){
-	//let ul = document.querySelector();
-	//mensagensErros	
+	mensagensErros.innerHTML = "";
 	for(let i=0; i<erros.length; i++){	
 		let li = document.createElement('li');	
 		li.textContent = erros[i];
