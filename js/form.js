@@ -63,9 +63,9 @@ function montaTrAdicionaATabela(paciente){
 
 	/*Adicionando TDs recem montadas como filhas da TR*/
 	pacienteTr.appendChild(montaTd(paciente.nome, 'info-nome'));
-	pacienteTr.appendChild(montaTd(paciente.peso, 'info-peso'));
-	pacienteTr.appendChild(montaTd(paciente.altura, 'info-altura'));
-	pacienteTr.appendChild(montaTd(paciente.gordura, 'info-gordura'));
+	pacienteTr.appendChild(montaTd(parseFloat(paciente.peso).toFixed(2), 'info-peso'));
+	pacienteTr.appendChild(montaTd(parseFloat(paciente.altura).toFixed(2), 'info-altura'));
+	pacienteTr.appendChild(montaTd(parseFloat(paciente.gordura).toFixed(2), 'info-gordura'));
 	pacienteTr.appendChild(montaTd(paciente.imc, 'info-imc'));
 	
 	/*Adicionando TR totalmente preenchida na tbody '#tabela-pacientes'*/

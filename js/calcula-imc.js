@@ -9,6 +9,7 @@ function calculoImc(peso, altura){
 	let retorno = 0;
 	peso = parseFloat(peso).toFixed(2);
 	altura = parseFloat(altura).toFixed(2);	
+	console.log(altura);
 	let pesoEhValido = validaPeso(peso);
 	let alturaEhValida = validaAltura(altura);
 	if(!pesoEhValido){			    
