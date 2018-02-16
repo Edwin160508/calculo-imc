@@ -9,10 +9,12 @@ function get(url){
 	return new Promise((resolve, reject)=>{
 		let xhr = new XMLHttpRequest();
 		xhr.open('GET', url);
-		xhr.addEventListener("load", function(event){
-			console.log(xhr.responseText);//
+		xhr.addEventListener("load", function(event){	
+			/*Transformando String em Array*/		
 			let pacientes = JSON.parse(xhr.responseText);
-			console.log(pacientes);
+			pacientes.forEach(function(paciente){
+				montaTrAdicionaATabela(paciente);
+			});
 		});
 		/*xhr.onreadystatechange = () =>{
 			if(xhr.readyState === 4){
