@@ -5,8 +5,8 @@ botaoBuscarPacientes.addEventListener('click', function(event){
 	get('http://api-pacientes.herokuapp.com/pacientes');
 });
 
+/*Função que faz requisições apenas do tipo GET*/
 function get(url){
-	return new Promise((resolve, reject)=>{
 		let xhr = new XMLHttpRequest();
 		let erroAjax = document.querySelector('#mensagem-erro-requisicao');
 		xhr.open('GET', url);
@@ -25,17 +25,6 @@ function get(url){
 			}
 			
 		});
-		/*xhr.onreadystatechange = () =>{
-			if(xhr.readyState === 4){
-				if(xhr.status === 200){
-					resolve(JSON.parse(xhr.responseText));
-					console.log(xhr.responseText);
-				}else{
-					reject(xhr.responseText);
-					console.log(xhr.responseText);
-				}
-			}
-		};*/
+		
 		xhr.send();
-	});
 }
