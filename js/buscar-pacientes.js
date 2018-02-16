@@ -8,13 +8,22 @@ botaoBuscarPacientes.addEventListener('click', function(event){
 function get(url){
 	return new Promise((resolve, reject)=>{
 		let xhr = new XMLHttpRequest();
+		let erroAjax = document.querySelector('#mensagem-erro-requisicao');
 		xhr.open('GET', url);
 		xhr.addEventListener("load", function(event){	
-			/*Transformando String em Array*/		
-			let pacientes = JSON.parse(xhr.responseText);
-			pacientes.forEach(function(paciente){
-				montaTrAdicionaATabela(paciente);
-			});
+			if(xhr.status == 200){
+				erroAjax.classList.add('invisivel');
+				/*Transformando String em Array*/		
+				let pacientes = JSON.parse(xhr.responseText);
+				pacientes.forEach(function(paciente){
+					montaTrAdicionaATabela(paciente);
+				});				
+			}else{
+				console.log(xhr.status);
+				console.log(xhr.responseText);				
+				erroAjax.classList.remove('invisivel');
+			}
+			
 		});
 		/*xhr.onreadystatechange = () =>{
 			if(xhr.readyState === 4){
